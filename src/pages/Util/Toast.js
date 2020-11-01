@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { ToastContainer, Zoom } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 class Toast extends Component {
   render () {

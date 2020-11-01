@@ -1,3 +1,6 @@
 export default {
-    initial: '/'
+    routesWebApp: {
+        initial: '/',
+        login: '/login'
+    }
 }

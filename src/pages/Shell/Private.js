@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import webAppRoutes from '../../routesWebApp'
 import { Route, Link, Redirect } from 'react-router-dom'
-import { Toast } from '../Helpers'
+import { Toast } from '../Util'
 
 const { routesWebApp } = webAppRoutes
 

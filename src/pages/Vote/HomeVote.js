@@ -35,15 +35,27 @@ class HomeVote extends Component {
         this.setState({ [name]: value })
     }
 
-    searchCampaign = () => {
+    searchCampaign = (e) => {
+        e.preventDefault();
         if (this.state.campaignCode) {
             this.setState({ loader: true })
 
             remoteVotersApi.client
                 .get(remoteVotersApi.endpoints.campaign.getByCode + this.state.campaignCode)
                 .then(response => {
-                    toast.success('Código de campanha válido!')
-                    console.log(response.data)
+
+                    this.setState({ loader: false })
+                    if (response.data.status) {
+                        toast.success('Código de campanha válido!')
+                        this.props.history.push({
+                            pathname: routesWebApp.vote.detail,
+                            state: {
+                                campaign: response.data
+                            }
+                        })
+                    } else {
+                        toast.warn('Essa campanha de votação ainda não começou!')
+                    }
                 })
                 .catch(response => {
                     toast.error('Código de campanha inválido')
@@ -62,7 +74,7 @@ class HomeVote extends Component {
 
     render() {
         return (
-            <form className="form-home-vote">
+            <form className="form-home-vote needs-validation" onSubmit={this.searchCampaign}>
                 <img src={logo} alt="RemoteVoters" width="200" height="200" />
                 <h1 className="h3 mb-3 font-weight-normal">Informe o código da campanha</h1>
                 <label htmlFor="campaignCode" className="sr-only">Código da campanha</label>
@@ -74,9 +86,8 @@ class HomeVote extends Component {
                         ? 'none'
                         : 'block'
                 }}
-                    onClick={this.searchCampaign}
                     className="mb-5 btn btn-lg btn-primary btn-block"
-                    type="button">Buscar</button>
+                    type="submit">Buscar</button>
 
 
                 <FadeLoader
@@ -86,14 +97,19 @@ class HomeVote extends Component {
                     height={20}
                     width={5}
                     radius={100}
-                    margin={'2px'}
+                    margin={'1px'}
                     color='black'
                     loading={this.state.loader}
                 />
-
-                <Link to={routesWebApp.login}>Portal empresa</Link>
-                <p className="mt-4 mb-3 text-muted">© 2020-2021 Helix Code</p>
                 <Toast />
+
+                <footer className="my-5 pt-5 text-muted text-center text-small">
+                    <p className="mb-1">© 2020-2021 Helix Code</p>
+                    <ul className="list-inline">
+                        <li className="list-inline-item"><Link to={routesWebApp.login}>Portal</Link></li>
+                        <li className="list-inline-item"><a target="_blank" href="https://fstrony.github.io">Suporte</a></li>
+                    </ul>
+                </footer>
             </form>
         )
     }

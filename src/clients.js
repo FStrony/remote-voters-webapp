@@ -10,7 +10,10 @@ export default {
         client: remoteVotersApiClient,
         endpoints: {
             campaign: {
-                getByCode: '/Campaign/getCampaign/'
+                getByCode: '/Campaigns/getCampaign/'
+            },
+            vote: {
+                register: '/Votes'
             }
         }
     }

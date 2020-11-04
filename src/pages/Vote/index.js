@@ -1,2 +1,3 @@
 export { default as HomeVote } from './HomeVote'
-export { default as AuthVote } from './AuthVote'
+export { default as Vote } from './Vote'
+export { default as VoteConfirmation } from './VoteConfirmation' 

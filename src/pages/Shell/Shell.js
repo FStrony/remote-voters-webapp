@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { Login } from '../Login'
-import { HomeVote, AuthVote } from '../Vote'
+import { HomeVote, Vote, VoteConfirmation } from '../Vote'
 import Private from './Private'
 import { Switch, Route } from 'react-router'
 import webAppRoutes from '../../routesWebApp'
@@ -13,7 +13,8 @@ class Shell extends Component {
         return (
             <Switch>
                 <Route exact path={routesWebApp.initial} component={HomeVote} />
-                <Route exact path={routesWebApp.vote.detail} component={AuthVote} />
+                <Route exact path={routesWebApp.vote.detail} component={Vote} />
+                <Route exact path={routesWebApp.vote.confirmation} component={VoteConfirmation} />
                 <Route exact path={routesWebApp.login} component={Login} />       
             </Switch>
         )

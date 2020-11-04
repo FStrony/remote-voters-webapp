@@ -3,7 +3,8 @@ export default {
         initial: '/',
         login: '/login',
         vote: {
-            detail: '/vote/detail'
+            detail: '/vote/detail',
+            confirmation: '/vote/confirmation'
         }
     }
 }

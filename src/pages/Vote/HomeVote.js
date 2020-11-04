@@ -45,7 +45,7 @@ class HomeVote extends Component {
                 .then(response => {
 
                     this.setState({ loader: false })
-                    if (response.data.status) {
+                    if (response.data.Status) {
                         toast.success('Código de campanha válido!')
                         this.props.history.push({
                             pathname: routesWebApp.vote.detail,
@@ -79,7 +79,7 @@ class HomeVote extends Component {
                 <h1 className="h3 mb-3 font-weight-normal">Informe o código da campanha</h1>
                 <label htmlFor="campaignCode" className="sr-only">Código da campanha</label>
                 <input type="text" id="campaignCode" onBlur={this.lostFocus} name="campaignCode" className={`form-control mb-3 ${this.state.validIndicator}`} placeholder="Código da campanha" value={this.state.campaignCode} required={true} autoFocus={true} onChange={this.onChangeInput} />
-
+                
                 <button style={{
                     display: this.state
                         .loader

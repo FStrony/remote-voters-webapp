@@ -1,4 +1,25 @@
-# Getting Started with Create React App
+# RemoteVoters WebApp
+
+Execution notes:
+Instale o Node.js [Download](https://nodejs.org/en/)
+
+**Note: Quando instalar o Node.js o NPM também é instalado no computador como parte do mesmo pacote!**
+
+Instale o gerenciador de dependecias do Facebook Yarn, que é mais recomendado para se trabalhar usando o React.
+
+No terminal, execute o seguinte comando:
+### npm install -g yarn
+
+Tudo pronto, agora pelo terminal vá até a pasta do projeto e use o comando:
+### npm start
+
+Esse commando ira compilar o projeto em modo de desenvolvimento na porta 3000. 
+Abra um navegador e acesse [http://localhost:3000]
+
+**Note: Se certifique de que o remote-voters-api esta rodando na sua maquina na porta 500!**
+
+
+## Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

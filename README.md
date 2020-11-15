@@ -14,7 +14,7 @@ Tudo pronto, agora pelo terminal vá até a pasta do projeto e use o comando:
 ### npm start
 
 Esse commando ira compilar o projeto em modo de desenvolvimento na porta 3000. 
-Abra um navegador e acesse [http://localhost:3000]
+Abra um navegador e acesse [http://localhost:3000](http://localhost:3000)
 
 **Note: Se certifique de que o remote-voters-api esta rodando na sua maquina na porta 500!**
 

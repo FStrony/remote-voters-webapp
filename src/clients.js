@@ -14,7 +14,8 @@ export default {
             },
             vote: {
                 register: '/Votes'
-            }
+            },
+            authentication: '/Authentication'
         }
     }
 }

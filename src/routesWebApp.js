@@ -2,7 +2,10 @@ export default {
     routesWebApp: {
         initial: '/',
         login: '/login',
-        dashboard: '/dashboard',
+        dashboard: {
+            home: '/dashboard',
+            result: '/dashboard/campaign-result'
+        },
         vote: {
             detail: '/vote/detail',
             confirmation: '/vote/confirmation'

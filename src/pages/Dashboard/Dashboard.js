@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { css } from '@emotion/core'
 import { FadeLoader } from 'react-spinners'
 import webAppRoutes from '../../routesWebApp'
-import PropTypes, { element } from 'prop-types'
+import PropTypes from 'prop-types'
 import { toast } from 'react-toastify'
 import { Toast } from '../Util'
 import { Pencil, Trash, Receipt, Lock, Unlock } from 'react-bootstrap-icons';
@@ -42,13 +42,12 @@ class Dashboard extends Component {
     getCampaign = () => {
         this.setState({ loader: true })
         remoteVotersApi.client
-            .get(remoteVotersApi.endpoints.campaign.getAllByCompanyId + this.state.companyId)
+            .get(format(remoteVotersApi.endpoints.campaign.getAllByCompanyId, this.state.companyId))
             .then(response => {
                 this.setState({
                     campaigns: response.data,
                     loader: false
                 })
-                console.log(this.state.campaigns)
             }).catch(response => {
                 toast.error('Ocorreu um erro! Tente novamente!')
                 this.setState({
@@ -90,6 +89,16 @@ class Dashboard extends Component {
             })
     } 
 
+    getResults = (campaignId) => {
+        this.props.history.push({
+            pathname: routesWebApp.dashboard.result,
+            state: {
+                companyId: this.state.companyId,
+                campaignId: campaignId
+            }
+        })
+    }
+
     render() {
 
         let to_display = []
@@ -104,25 +113,25 @@ class Dashboard extends Component {
                             {c.Status ? 'Ativo' : 'Desativado'}
                         </td>
                         <td>
-                            <button type="button" class="btn btn-dark btn-sm mr-1" title="Editar">
+                            <button type="button" className="btn btn-dark btn-sm mr-1" title="Editar">
                                 <Pencil aria-hidden="true" />
                             </button>
-                            <button type="button" class="btn btn-dark btn-sm mr-1" title="Resultados da votação">
+                            <button type="button" className="btn btn-dark btn-sm mr-1" title="Resultados da votação" onClick={() => this.getResults(c.Id)}>
                                 <Receipt aria-hidden="true" />
                             </button>
 
                             {c.Status ?
                                 (
-                                    <button type="button" class="btn btn-dark btn-sm mr-1" title="Desativar" onClick={() => this.deactivateCampaign(c.Id)}>
+                                    <button type="button" className="btn btn-dark btn-sm mr-1" title="Desativar" onClick={() => this.deactivateCampaign(c.Id)}>
                                         <Lock aria-hidden="true" />
                                     </button>
                                 ) : (
-                                    <button type="button" class="btn btn-dark btn-sm mr-1" title="Ativar" onClick={() => this.activateCampaign(c.Id)}>
+                                    <button type="button" className="btn btn-dark btn-sm mr-1" title="Ativar" onClick={() => this.activateCampaign(c.Id)}>
                                         <Unlock aria-hidden="true" />
                                     </button>
                                 )
                             }
-                            <button type="button" class="btn btn-dark btn-sm" title="Deletar" onClick={() => this.deleteCampaign(c.Id)}>
+                            <button type="button" className="btn btn-dark btn-sm" title="Deletar" onClick={() => this.deleteCampaign(c.Id)}>
                                 <Trash aria-hidden="true" />
                             </button>
                         </td>
@@ -152,7 +161,7 @@ class Dashboard extends Component {
                             <ul className="navbar-nav mr-auto">
                                 <li className="nav-item active">
                                     <Link className="nav-link" to={{
-                                        pathname: routesWebApp.dashboard,
+                                        pathname: routesWebApp.dashboard.home,
                                         state: {
                                             companyId: this.state.companyId
                                         }
@@ -184,7 +193,7 @@ class Dashboard extends Component {
                             loading={this.state.loader}
                         />
 
-                        <table class="table table-striped" >
+                        <table className="table table-striped" >
                             <thead>
                                 <tr>
                                     <th scope="col">Codigo da Campanha</th>

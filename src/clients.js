@@ -10,11 +10,12 @@ export default {
         client: remoteVotersApiClient,
         endpoints: {
             campaign: {
-                getByCode: '/Campaigns/getCampaign/',
-                getAllByCompanyId: '/Campaigns/',
+                getByCode: '/Campaigns/getCampaign/{0}',
+                getAllByCompanyId: '/Campaigns/{0}',
                 activate: '/Campaigns/{0}/activate/{1}',
                 deactivate: '/Campaigns/{0}/deactivate/{1}',
-                delete: '/Campaigns/{0}/delete-campaign/{1}'
+                delete: '/Campaigns/{0}/delete-campaign/{1}',
+                result: '/Campaigns/{0}/get-campaign-results/{1}'
             },
             vote: {
                 register: '/Votes'

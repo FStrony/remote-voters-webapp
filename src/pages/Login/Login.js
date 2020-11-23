@@ -53,7 +53,7 @@ class Login extends Component {
                     toast.success('Login realizado com sucesso')
 
                     this.props.history.push({
-                        pathname: routesWebApp.dashboard,
+                        pathname: routesWebApp.dashboard.home,
                         state: {
                             companyId: response.data
                         }

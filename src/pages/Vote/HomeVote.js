@@ -6,6 +6,7 @@ import webAppRoutes from '../../routesWebApp'
 import PropTypes from 'prop-types'
 import { toast } from 'react-toastify'
 import { Toast } from '../Util'
+import { format } from 'react-string-format'
 
 import clients from '../../clients'
 import logo from '../../images/logo.png'
@@ -41,7 +42,7 @@ class HomeVote extends Component {
             this.setState({ loader: true })
 
             remoteVotersApi.client
-                .get(remoteVotersApi.endpoints.campaign.getByCode + this.state.campaignCode)
+                .get(format(remoteVotersApi.endpoints.campaign.getByCode, this.state.campaignCode))
                 .then(response => {
 
                     this.setState({ loader: false })
@@ -79,7 +80,7 @@ class HomeVote extends Component {
                 <h1 className="h3 mb-3 font-weight-normal">Informe o código da campanha</h1>
                 <label htmlFor="campaignCode" className="sr-only">Código da campanha</label>
                 <input type="text" id="campaignCode" onBlur={this.lostFocus} name="campaignCode" className={`form-control mb-3 ${this.state.validIndicator}`} placeholder="Código da campanha" value={this.state.campaignCode} required={true} autoFocus={true} onChange={this.onChangeInput} />
-                
+
                 <button style={{
                     display: this.state
                         .loader

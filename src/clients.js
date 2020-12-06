@@ -17,6 +17,9 @@ export default {
                 delete: '/Campaigns/{0}/delete-campaign/{1}',
                 result: '/Campaigns/{0}/get-campaign-results/{1}'
             },
+            company: {
+                create: '/Companies'
+            },
             vote: {
                 register: '/Votes'
             },

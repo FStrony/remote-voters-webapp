@@ -211,7 +211,10 @@ class Dashboard extends Component {
                 </main>
 
                 <footer className="my-5 pt-5 text-muted text-center text-small">
-                    <p className="mb-1 text-muted">© 2020-2021 Helix Code</p>
+                    <p className="mb-1">© 2020-2021 Helix Code</p>
+                    <ul className="list-inline">
+                        <li className="list-inline-item"><a target="_blank" href="https://fstrony.github.io">Suporte</a></li>
+                    </ul>
                 </footer>
                 <Toast />
             </div>
